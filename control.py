@@ -55,36 +55,30 @@ def actuate(d_r):
   
 
 #function to perform rotation using L293D IC and DC Motor
-##def rotate(d_theta):
-##    
-##    if (d_theta>0):
-##        p.start(0)
-##        i=(d_theta/(4.2))*1
-##        for j in range (0,i):
-##            p.changeDutyCycle(100)
-##        p.stop()    
-##        print("Clockwise rotation = %2.3f",d_r)
-##    
-##    
-##    if (d_theta<0):
-##        q.start(0)
-##        i=(d_theta/(4.2))*1
-##        for j in range (0,i):
-##            q.changeDutyCycle(100)
-##        q.stop()
-##        print("Anti-Clockwise rotation = %2.3f",d_r)
-##    
+def rotate(d_theta):
+    
+    if (d_theta>0):
+        p.start(0)
+        i=(d_theta/(4.2))*1
+        for j in range (0,i):
+            p.changeDutyCycle(100)
+        p.stop()    
+        print("Clockwise rotation = %2.3f",d_r)    
+    
+    if (d_theta<0):
+        q.start(0)
+        i=(d_theta/(4.2))*1
+        for j in range (0,i):
+            q.changeDutyCycle(100)
+        q.stop()
+        print("Anti-Clockwise rotation = %2.3f",d_r)
+    
         
 #commence operation        
 for i in range(1,29,1):
     d_r=control_data.iloc[i,5]
-##    d_theta=control_data.iloc[i,6]
-##    
+    d_theta=control_data.iloc[i,6]
+    
     actuate(d_r)
-##    rotate(d_theta)
-##    
-    
-      
-        
-    
+    rotate(d_theta)    
 GPIO.cleanup()
